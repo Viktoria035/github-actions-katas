@@ -25,7 +25,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
-          name: my-artifact
+          name: code
           path: .
       - name: Run linting
         uses: super-linter/super-linter/slim@v7
