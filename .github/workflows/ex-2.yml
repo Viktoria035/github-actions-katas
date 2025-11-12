@@ -8,6 +8,7 @@ jobs:
       - uses: editorconfig-checker/action-editorconfig-checker@main
       - run: editorconfig-checker
   Build:
+    needs: [editorconfig]
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
