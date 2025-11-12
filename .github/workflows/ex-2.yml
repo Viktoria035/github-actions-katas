@@ -7,6 +7,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: editorconfig-checker/action-editorconfig-checker@main
       - run: editorconfig-checker
+  markdown-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone down repo for markdown
+        uses: actions/checkout@v4
+      - name: Install Markdown cli
+        run: |
+          npm i -g cli-markdown
+      - name: Apply to md files
+        run: md **/*.md
   Build:
     needs: [editorconfig]
     runs-on: ubuntu-latest
