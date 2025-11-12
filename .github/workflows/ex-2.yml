@@ -50,7 +50,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SECRET_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: app/src/gradlew build sonar --info
+        run: app/gradlew build sonar --info
   Linting:
     needs: Build
     runs-on: ubuntu-latest
