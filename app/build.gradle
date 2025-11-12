@@ -2,9 +2,15 @@ plugins {
     id "net.ltgt.apt-eclipse" version "0.21"
     id "com.github.johnrengelman.shadow" version "5.0.0"
     id "application"
+    id "org.sonarqube" version "7.0.1.6134"
 }
 
-
+sonar {
+  properties {
+    property "sonar.projectKey", "Viktoria035_github-actions-katas"
+    property "sonar.organization", "viktoria123"
+  }
+}
 
 version "0.1"
 group "example.micronaut"
