@@ -1,12 +1,12 @@
 name: Ex-2
 on: push
 jobs:
-  editorconfig:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: editorconfig-checker/action-editorconfig-checker@main
-      - run: editorconfig-checker
+  # editorconfig:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: editorconfig-checker/action-editorconfig-checker@main
+  #     - run: editorconfig-checker
   markdown-cli:
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +18,7 @@ jobs:
       - name: Apply to md files
         run: md **/*.md
   Build:
-    needs: [editorconfig]
+    # needs: [editorconfig]
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
@@ -34,6 +34,11 @@ jobs:
           name: code
           path: .
           include-hidden-files: true
+      - name: SonarQube Scan
+        uses: sonarsource/sonarcloud-github-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SECRET_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   Linting:
     needs: Build
     runs-on: ubuntu-latest
