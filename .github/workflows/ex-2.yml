@@ -35,7 +35,7 @@ jobs:
           path: .
           include-hidden-files: true
       - name: SonarQube Scan
-        uses: sonarsource/sonarcloud-github-action@v4
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SECRET_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
